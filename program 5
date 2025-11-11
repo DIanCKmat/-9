@@ -1,0 +1,51 @@
+static void Main(string[] args)
+{
+    Pet pet1 = new Pet("Петров",80);
+    pet1.Play();
+    pet1.Rest();
+    pet1.Energy = 150;
+    pet1.Play();
+
+}
+internal class Pet
+{
+    private string name;
+    private int energy;
+
+    public Pet(string name, int energy)
+    {
+        Name = name;
+        Energy = energy;
+
+    }
+
+    public string Name
+    {
+      get { return name; } set { name = value; }
+    }
+    public int Energy
+    {
+        get { return energy; } set
+        {
+            if (value < 0 || value > 100)
+            {
+               Console.WriteLine("Энергия должна быть от 0 до 100");
+            }
+            else
+            {
+                energy = value;
+            }
+        }
+    }
+    public void Play()
+    {
+            Energy = Math.Max(energy - 20, 0);
+            Console.WriteLine($"{Name} играет, энергия: {Energy}");
+    
+    }
+    public void Rest()
+    {
+            Energy = Math.Min(energy + 30, 100);
+            Console.WriteLine($"{Name} отдыхает, энергия: {Energy}");
+    }
+}
