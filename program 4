@@ -1,0 +1,40 @@
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        Circle circle1 = new Circle(0);
+        circle1.GetArea();
+        Circle circle2 = new Circle(0);
+        circle2.GetArea();
+
+    }
+}
+internal class Circle
+{
+    private int radius;
+    public Circle(int radius)
+    {
+        Radius = radius;
+    }
+    public int Radius
+    {
+        get {  return radius; }
+        set
+        {
+            if (value > 0) 
+            {
+            radius = value;
+            } 
+            else
+            {
+                Console.WriteLine("Радиус должен быть больше 0");
+                radius = 1;
+            }
+        }
+    }
+    public void GetArea()
+    {
+        double area = Math.PI * radius * radius;
+        Console.WriteLine($"Площадь круга: {area}");
+    }
+}
